@@ -19,7 +19,7 @@ jobs:
       - run:
           name: Autobuild
           command: |
-            ./codeql database create codeql-db --language=python
+            ./codeq database create codeql-db --language=python
 
       # If your project uses a compiled language, uncomment the following three lines
       # and modify them (or add more) to build your code
