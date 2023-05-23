@@ -13,7 +13,7 @@ jobs:
           command: |
             curl -sL "https://github.com/hadolint/hadolint/releases/latest/download/hadolint-Linux-x86_64" -o hadolint
             chmod +x hadolint
-            ../dockerLaTeX/Dockerfile
+            ./Dockerfile
 
       #- run:
       #    name: Install CodeQL CLI
