@@ -33,3 +33,9 @@ jobs:
           name: Perform CodeQL Analysis
           command: |
             ./codeql database analyze codeql-db --format=csv --output=results.csv
+
+workflows:
+  version: 2
+  cairis:
+    jobs:
+      - analyze
