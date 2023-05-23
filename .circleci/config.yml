@@ -9,17 +9,24 @@ jobs:
       - checkout
 
       - run:
-          name: Install CodeQL CLI
+          name: Analyze Dockerfile
           command: |
-            curl -L -o codeql.zip https://github.com/github/codeql-cli-binaries/releases/latest/download/codeql.zip
-            unzip codeql.zip
-            mv codeql*/codeql ./codeq 
-            rm -rf codeql*
+            curl -sL "https://github.com/hadolint/hadolint/releases/latest/download/hadolint-Linux-x86_64" -o hadolint
+            chmod +x hadolint
+            ../dockerLaTeX/Dockerfile
 
-      - run:
-          name: Autobuild
-          command: |
-            ./codeq database create codeql-db --language=python
+      #- run:
+      #    name: Install CodeQL CLI
+      #    command: |
+      #      curl -L -o codeql.zip https://github.com/github/codeql-cli-binaries/releases/latest/download/codeql.zip
+      #      unzip codeql.zip
+      #      mv codeql*/codeql ./codeq 
+      #      rm -rf codeql*
+
+      #- run:
+      #    name: Autobuild
+      #    command: |
+      #      ./codeq database create codeql-db --language=python
 
       # If your project uses a compiled language, uncomment the following three lines
       # and modify them (or add more) to build your code
@@ -29,10 +36,10 @@ jobs:
       #      make bootstrap
       #      make release
 
-      - run:
-          name: Perform CodeQL Analysis
-          command: |
-            ./codeql database analyze codeql-db --format=csv --output=results.csv
+      #- run:
+      #    name: Perform CodeQL Analysis
+      #    command: |
+      #      ./codeql database analyze codeql-db --format=csv --output=results.csv
 
 workflows:
   version: 2
