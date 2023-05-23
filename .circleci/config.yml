@@ -1,0 +1,35 @@
+version: 2.1
+
+jobs:
+  analyze:
+    docker:
+      - image: circleci/python:3.8
+
+    steps:
+      - checkout
+
+      - run:
+          name: Install CodeQL CLI
+          command: |
+            curl -L -o codeql.zip https://github.com/github/codeql-cli-binaries/releases/latest/download/codeql.zip
+            unzip codeql.zip
+            mv codeql*/codeql ./
+            rm -rf codeql*
+
+      - run:
+          name: Autobuild
+          command: |
+            ./codeql database create codeql-db --language=python
+
+      # If your project uses a compiled language, uncomment the following three lines
+      # and modify them (or add more) to build your code
+      #- run:
+      #    name: Build
+      #    command: |
+      #      make bootstrap
+      #      make release
+
+      - run:
+          name: Perform CodeQL Analysis
+          command: |
+            ./codeql database analyze codeql-db --format=csv --output=results.csv

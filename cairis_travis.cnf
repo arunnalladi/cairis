@@ -1,0 +1,16 @@
+dbhost = localhost
+dbport = 3306
+dbuser = cairisuser
+dbpasswd = cairisuser
+dbname = cairis_default
+tmp_dir = /tmp
+root = cairis
+web_port = 7071
+log_level = warning
+web_static_dir = /home/travis/build/failys/cairis/cairis/web
+web_asset_dir = /home/travis/build/failys/cairis/cairis/web/assets
+mail_server =
+mail_port = 
+mail_user = 
+mail_passwd = 
+secret_key = super-secret
